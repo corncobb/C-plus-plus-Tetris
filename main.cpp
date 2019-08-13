@@ -3,6 +3,13 @@
 	It is also made by Javidx9
 */
 
+#ifndef UNICODE
+#define UNICODE
+#endif
+#ifndef _UNICODE
+#define _UNICODE
+#endif
+
 #include <iostream>
 #include <thread>
 #include <vector>
@@ -85,13 +92,41 @@ int main()
 	SetConsoleActiveScreenBuffer(hConsole);
 	DWORD dwBytesWritten = 0;
 
-	tetromino[0].append(L"..X...X...X...X."); // Tetronimos 4x4
-	tetromino[1].append(L"..X..XX...X.....");
-	tetromino[2].append(L".....XX..XX.....");
-	tetromino[3].append(L"..X..XX..X......");
-	tetromino[4].append(L".X...XX...X.....");
-	tetromino[5].append(L".X...X...XX.....");
-	tetromino[6].append(L"..X...X..XX.....");
+	//create assets
+    tetromino[0].append(L"..X.");
+    tetromino[0].append(L"..X.");
+    tetromino[0].append(L"..X.");
+    tetromino[0].append(L"..X.");
+
+    tetromino[1].append(L"..X.");
+    tetromino[1].append(L".XX.");
+    tetromino[1].append(L".X..");
+    tetromino[1].append(L"....");
+
+    tetromino[2].append(L".X..");
+    tetromino[2].append(L".XX.");
+    tetromino[2].append(L"..X.");
+    tetromino[2].append(L"....");
+
+    tetromino[3].append(L"....");
+    tetromino[3].append(L".XX.");
+    tetromino[3].append(L".XX.");
+    tetromino[3].append(L"....");
+
+    tetromino[4].append(L"..X.");
+    tetromino[4].append(L".XX.");
+    tetromino[4].append(L"..X.");
+    tetromino[4].append(L"....");
+
+    tetromino[5].append(L"....");
+    tetromino[5].append(L".XX.");
+    tetromino[5].append(L"..X.");
+    tetromino[5].append(L"..X.");
+
+    tetromino[6].append(L"....");
+    tetromino[6].append(L".XX.");
+    tetromino[6].append(L".X..");
+    tetromino[6].append(L".X..");
 
 	pField = new unsigned char[nFieldWidth*nFieldHeight]; // Create play field buffer
 	for (int x = 0; x < nFieldWidth; x++) // Board Boundary
@@ -205,7 +240,7 @@ int main()
 					screen[(nCurrentY + py + 2)*nScreenWidth + (nCurrentX + px + 2)] = nCurrentPiece + 65;
 
 		// Draw Score
-		swprintf_s(&screen[2 * nScreenWidth + nFieldWidth + 6], 16, L"SCORE: %8d", nScore);
+		//swprintf_s(&screen[2 * nScreenWidth + nFieldWidth + 6], 16, L"SCORE: %8d", nScore);
 
 		// Animate Line Completion
 		if (!vLines.empty())
